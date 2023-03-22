@@ -1,3 +1,4 @@
 local git probably
 now github connection
 git push -u origin main
+recheck git commit is local, sync is github
