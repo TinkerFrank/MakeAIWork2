@@ -32,7 +32,7 @@ X_train = [ [[1,1,1],
          ]
 
 #where 1 = cross and 0 = circle
-y_train=[[0,0,1,1]]
+y_train=[[0],[0],[1],[1]]
 
 
 '''Begin met een directe, intuitieve implementatie met behulp van de zelf te onwerpen
@@ -119,6 +119,7 @@ def predict_class(inputMatrix):
     # converting to list, evaluated on demand 
     av = list(activationvalues)
     print('Sigmoid Binary Activation values:',av)
+    print('Softmax Probability Activation Values:',[round(item,2) for item in softmax(flatnodes)])
     if (softmax(flatnodes)[0]>0.5):
         return(1)
     else:
@@ -132,17 +133,24 @@ def softmax(x):
 
 print(predict_class(Matrix(circle)))
 
-def train(self, training_inputs, labels):
-       for inputs, label in zip(training_inputs, labels):
-           prediction = predict_class(inputs)
-           error = label - prediction
+def train(Xtrain, ytrain):
+       learningrate = 0.01
+       bias = 0 
+       wVector = []
+       for inputs, label in zip(Xtrain, ytrain):
+            print(inputs)
+            print(label)
+            prediction = predict_class(Matrix(inputs))
+
+            error = label[0] - prediction
             # recalculate weights
-           for i in range(len(inputs)):
-               self.weights[i] += error * inputs[i] * self.learning_rate
+            for i in range(len(inputs)): #3x3 input matrix -> flat_transform 
+               wVector[i] += error * inputs[i] * learningrate
 
-           self.bias += error * self.learning_rate
+            bias += error * learningrate
+            return(wVector)
 
-#train(X_train,y_train) 
+train(X_train,y_train) 
 
 
 

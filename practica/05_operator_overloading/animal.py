@@ -1,3 +1,5 @@
+import unittest
+
 class myAnimal():
     # Docstring to document the purpose, will show up on-hover
     """
@@ -11,6 +13,7 @@ class myAnimal():
         self.color = color
 
     def setSound(self, input):
+        self.assertTrue('FOO'.isupper())
         self.snd = input
 
     def get_type(self) -> str:  # showes return type on-hover
@@ -44,3 +47,8 @@ class mynumber():
     def __add__(self, b):
         return(self.a*b)
 
+
+#unittest
+if __name__ == '__main__':
+    snuffy = myAnimal('woof')
+    print(snuffy.get_type())
