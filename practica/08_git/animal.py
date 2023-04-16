@@ -22,3 +22,14 @@ if __name__ == '__main__':
     main()
 
 
+'''
+#Save time with aliases
+#open global editor
+	git config --global -e
+
+#add section for alias
+	[alias]
+	graph = log --all --graph --decorate --oneline
+
+'''
+
